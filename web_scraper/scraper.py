@@ -1,6 +1,20 @@
-"""
-Demo of scraping Code Fellows Courses
-"""
+from bs4 import BeautifulSoup
+import requests
+
+
+URL = "https://en.wikipedia.org/wiki/History_of_the_Internet"
+page = requests.get(URL)
+soup = BeautifulSoup(page.content, "html.parser")
+
+# results = soup.find(class_="course-details")
+#
+# ^^ COURSE DETAILS part is just some customization but results does the same thing
+
+
+
+
+
+
 
 ###############
 # step 1
@@ -15,10 +29,8 @@ Demo of scraping Code Fellows Courses
 # pip install requests
 ###############
 
-import requests
 
-URL = "https://testing-www.codefellows.org/courses/code-400/"
-page = requests.get(URL)
+# URL = "https://testing-www.codefellows.org/courses/code-400/"
 
 
 ###############
@@ -27,12 +39,10 @@ page = requests.get(URL)
 # So let's see if we can make sense of the raw html by parsing it
 ###############
 
-from bs4 import BeautifulSoup
 
 # BeautifulSoup can parse many types of content.
 # We're parsing html so let BeautifulSoup know
 # conventionally you store the BeatifulSoup instance in a variable named soup
-soup = BeautifulSoup(page.content, "html.parser")
 
 ###############
 # step 3
@@ -41,7 +51,6 @@ soup = BeautifulSoup(page.content, "html.parser")
 
 # here we're finding the first element with the given class
 # NOTE: use class_ since class by itself is a Python keyword
-results = soup.find(class_="course-details")
 
 # calling prettify method makes output a lot easier to read
 # print(results.prettify())
